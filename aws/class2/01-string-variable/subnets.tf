@@ -5,5 +5,5 @@ resource "aws_subnet" "myprivatesubnet" {
 
 resource "aws_subnet" "mypublicsubnet" {
   vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = var.arunpublicsubnet
+  cidr_block = var.pubsubcidr
 }

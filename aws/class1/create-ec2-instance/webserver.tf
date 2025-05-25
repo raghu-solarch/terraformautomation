@@ -2,9 +2,9 @@ resource "aws_instance" "My-Webserver" {
 
   ami                    = "ami-0a313d6098716f372"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = ["${aws_security_group.webserver_sg.id}"]
   tags = {
     Name = "My-Webserver"
+    Creation_Time = "$Date"
   }
   key_name  = "careerbytecode"
   user_data = <<EOF

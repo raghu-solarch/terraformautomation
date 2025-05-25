@@ -14,7 +14,8 @@ resource "aws_instance" "myec2" {
 
 
 resource "aws_eip" "lb" {
-  vpc = true
+  domain = "vpc"
+  instance = aws_instance.myec2.id
   tags = {
     Description = "server1-cnl-EIP"
   }

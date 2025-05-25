@@ -12,4 +12,4 @@
 
 > Internet Gateway (IGW) allows instances with public IPs to access the internet. NAT Gateway (NGW) allows instances with no public IPs to access the internet.
 
-[![Watch the video](NAT-Gateway-setup.png)]
+[![Watch the Picture](NAT-Gateway-setup.png)]
