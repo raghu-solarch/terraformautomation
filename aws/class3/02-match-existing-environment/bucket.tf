@@ -50,3 +50,7 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 #   block_public_policy     = false
 #   restrict_public_buckets = false
 # }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3878ed2497ef0d0fdee4f5a4bfae9123d4e40292
