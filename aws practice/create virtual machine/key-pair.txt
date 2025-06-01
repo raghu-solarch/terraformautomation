@@ -1,0 +1,4 @@
+resource "aws_key_pair" "raghu_kp_ppk" {
+  key_name   = "raghu_kp_ppk"
+  public_key = file("raghu_kp_ppk.pub")
+}

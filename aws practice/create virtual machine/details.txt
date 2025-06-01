@@ -1,0 +1,1 @@
+Here we are giving internet access to public ip and this is not secure and right way.

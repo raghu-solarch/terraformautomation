@@ -1,0 +1,73 @@
+provider "aws" {
+  region = "eu-central-1" # change region as needed
+}
+=================
+resource "aws_vpc" "main_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
+===================
+subnet.tf
+
+resource "aws_subnet" "public" {
+  vpc_id     = aws_vpc.main_vpc.id
+  cidr_block = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "Public"
+  }
+}
+
+resource "aws_subnet" "private" {
+  vpc_id     = aws_vpc.main_vpc.id
+  cidr_block = "10.0.2.0/24"
+
+  tags = {
+    Name = "Private"
+  }
+}
+=======================
+securitygroup.tf
+
+resource "aws_security_group" "securitygroup" {
+  name        = "securitygroup"
+  description = "Allow all inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.main_vpc.id
+
+  ingress {
+    description = "allow all traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+=========================
+webserver.tf
+
+resource "aws_instance" "webserver" {
+  ami                    = "ami-03250b0e01c28d196"
+  instance_type          = "t2.micro"
+  subnet_id = aws_subnet.public.id
+  vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
+  tags = {
+    Name = "webserver"
+  }
+  key_name  = "raghu_kp_ppk"  
+  user_data = <<EOF
+#!/bin/bash -xe
+apt update -y
+apt install apache2 -y
+service apache2 restart
+echo "Hello world" > /var/www/html/index.html
+EOF
+}
+======================
+
