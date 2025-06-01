@@ -1,1 +1,0 @@
-- https://learn.microsoft.com/en-us/azure/load-balancer/quickstart-load-balancer-standard-public-terraform
