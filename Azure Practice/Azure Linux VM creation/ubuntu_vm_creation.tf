@@ -1,13 +1,13 @@
 resource "azurerm_linux_virtual_machine" "dev-ubuntu-vm" {
-  name                = "dev-ubuntu-vm"
-  resource_group_name = azurerm_resource_group.dev-resource-group.name
-  location            = azurerm_resource_group.dev-resource-group.location
-  size                = "Standard_B1s"
-  admin_username      = "learning"
+  name                  = "dev-ubuntu-vm"
+  resource_group_name   = azurerm_resource_group.dev-resource-group.name
+  location              = azurerm_resource_group.dev-resource-group.location
+  size                  = "Standard_B1s"
+  admin_username        = "learning"
   network_interface_ids = [azurerm_network_interface.dev-nic.id]
 
   disable_password_authentication = false
-  admin_password                  = "Redhat@12345!"
+  admin_password                  = "Redhat@12345"
 
   os_disk {
     caching              = "ReadWrite"
