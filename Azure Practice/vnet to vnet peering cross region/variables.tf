@@ -51,7 +51,7 @@ variable "vnet2_name" {
 variable "vnet2_location" {
   description = "Azure region for Virtual Network 2 and Server 2."
   type        = string
-  default     = "North Europe"
+  default     = "East US"
 }
 
 variable "vnet2_address_space" {
@@ -88,8 +88,8 @@ variable "vm_admin_username" {
 variable "vm_admin_password" {
   description = "Admin password for the virtual machines. Use a strong password!"
   type        = string
-  sensitive   = true           # Mark as sensitive to prevent showing in plan/apply output
-  default     = "Redhat@12345" # Consider using SSH keys instead for production
+  sensitive   = true
+  default     = "Redhat@12345"
 }
 
 variable "os_disk_type" {
