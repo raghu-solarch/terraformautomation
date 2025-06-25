@@ -67,7 +67,7 @@ variable "vm_names" {
 variable "vm_size" {
   description = "VM Size"
   type        = string
-  default     = "Standard_B1s"
+  default     = "Standard_B2s"
 }
 
 variable "admin_username" {
